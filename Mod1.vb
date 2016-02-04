@@ -17,9 +17,9 @@ Module Mod1
         ReDim processes(numProcesses)
 
         For i = 0 To numProcesses
-            processes(i) = New UserProcess("P" & i, messageQueue)
+            processes(i) = New UserProcess(i, messageQueue, numProcesses)
             Console.WriteLine(processes(i).User)
         Next
     End Sub
-    'test comment
+
 End Module
