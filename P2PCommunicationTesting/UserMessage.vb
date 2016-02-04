@@ -1,4 +1,4 @@
-Public Class UserMessage
+﻿Public Class UserMessage
 
     Private message As String
     Private sentBy As String
