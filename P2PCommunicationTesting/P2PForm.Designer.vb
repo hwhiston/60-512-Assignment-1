@@ -25,6 +25,7 @@ Partial Class P2PForm
         Me.txtHistory = New System.Windows.Forms.TextBox()
         Me.txtChat = New System.Windows.Forms.TextBox()
         Me.btnSend = New System.Windows.Forms.Button()
+        Me.lblUsername = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'txtHistory
@@ -32,12 +33,12 @@ Partial Class P2PForm
         Me.txtHistory.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtHistory.Location = New System.Drawing.Point(13, 13)
+        Me.txtHistory.Location = New System.Drawing.Point(13, 29)
         Me.txtHistory.Multiline = True
         Me.txtHistory.Name = "txtHistory"
         Me.txtHistory.ReadOnly = True
         Me.txtHistory.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.txtHistory.Size = New System.Drawing.Size(359, 208)
+        Me.txtHistory.Size = New System.Drawing.Size(359, 192)
         Me.txtHistory.TabIndex = 0
         '
         'txtChat
@@ -58,12 +59,21 @@ Partial Class P2PForm
         Me.btnSend.Text = "Send"
         Me.btnSend.UseVisualStyleBackColor = True
         '
+        'lblUsername
+        '
+        Me.lblUsername.AutoSize = True
+        Me.lblUsername.Location = New System.Drawing.Point(13, 13)
+        Me.lblUsername.Name = "lblUsername"
+        Me.lblUsername.Size = New System.Drawing.Size(0, 13)
+        Me.lblUsername.TabIndex = 3
+        '
         'P2PForm
         '
         Me.AcceptButton = Me.btnSend
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(384, 261)
+        Me.Controls.Add(Me.lblUsername)
         Me.Controls.Add(Me.btnSend)
         Me.Controls.Add(Me.txtChat)
         Me.Controls.Add(Me.txtHistory)
@@ -78,4 +88,5 @@ Partial Class P2PForm
     Friend WithEvents txtHistory As System.Windows.Forms.TextBox
     Friend WithEvents txtChat As System.Windows.Forms.TextBox
     Friend WithEvents btnSend As System.Windows.Forms.Button
+    Friend WithEvents lblUsername As System.Windows.Forms.Label
 End Class

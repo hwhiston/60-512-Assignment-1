@@ -7,25 +7,19 @@ Public Class UserProcess
     Private userName As String
     Private userThread As Thread
     Private chatForm As P2PForm
-    Private vectorClock As ArrayList
+    Private timeStamp As Integer
 
-    Public Sub New(id As Integer, ByRef messageQueue As ArrayList, numProcesses As Integer)
-        Dim i As Integer
-
+    Public Sub New(id As Integer, ByRef messageQueue As ArrayList, ByRef vectorClock As ArrayList)
         Me.id = id
         Me.userName = "P" & id
-        Me.vectorClock = New ArrayList
-
-        For i = 0 To numProcesses
-            Me.vectorClock.Add(0)
-        Next
+        Me.timeStamp = 0
 
         userThread = New Thread(AddressOf MessageTask)
         userThread.IsBackground = False
         userThread.Start()
     End Sub
     Sub MessageTask()
-        chatForm = New P2PForm(userName, messageQueue, vectorClock)
+        chatForm = New P2PForm(Me, messageQueue, vectorClock)
         chatForm.ShowDialog()
     End Sub
 
@@ -35,6 +29,24 @@ Public Class UserProcess
         End Get
         Set(ByVal Value As String)
             Me.userName = Value
+        End Set
+    End Property
+
+    Property PID() As Integer
+        Get
+            Return Me.id
+        End Get
+        Set(ByVal Value As Integer)
+            Me.id = Value
+        End Set
+    End Property
+
+    Property CurrentTimeStamp() As Integer
+        Get
+            Return Me.id
+        End Get
+        Set(ByVal Value As Integer)
+            Me.timeStamp = Value
         End Set
     End Property
 

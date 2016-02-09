@@ -5,6 +5,7 @@ Module Mod1
     Private numProcesses As Integer
     Private processes() As UserProcess
     Public messageQueue As New ArrayList
+    Public vectorClock As New ArrayList
 
     Sub Main()
         Dim i As Integer
@@ -17,7 +18,8 @@ Module Mod1
         ReDim processes(numProcesses)
 
         For i = 0 To numProcesses
-            processes(i) = New UserProcess(i, messageQueue, numProcesses)
+            vectorClock.Add(0)
+            processes(i) = New UserProcess(i, messageQueue, vectorClock)
             Console.WriteLine(processes(i).User)
         Next
     End Sub

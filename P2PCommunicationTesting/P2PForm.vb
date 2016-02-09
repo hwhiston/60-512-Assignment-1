@@ -4,17 +4,17 @@ Imports System.Windows.Forms
 
 Public Class P2PForm
 
-    Private userName As String
     Private userMessage As UserMessage
     Private listenerThread As Thread
     Private lastMessageCount As Integer
-    Private vectorClock As ArrayList
+    Private currentTimeStamp As Integer
+    Private currentProcess As UserProcess
 
-    Public Sub New(userName As String, ByRef messageQueue As ArrayList, vectorClock As ArrayList)
+    Public Sub New(userProcess As UserProcess, ByRef messageQueue As ArrayList, ByRef vectorClock As ArrayList)
         InitializeComponent()
         lastMessageCount = messageQueue.Count
-        Me.userName = userName
-        Me.vectorClock = vectorClock
+        Me.currentProcess = userProcess
+        Me.lblUsername.Text = currentProcess.User
         listenerThread = New Thread(AddressOf Listener)
         listenerThread.IsBackground = True
         listenerThread.Start()
@@ -23,16 +23,26 @@ Public Class P2PForm
     Private Sub btnSend_Click(sender As Object, e As EventArgs) Handles btnSend.Click
         If txtChat.Text.Trim() <> "" Then
             Dim i As Integer
-            Dim vectorClockString As String
+            Dim vectorClockStringBefore As String = String.Empty
+            Dim vectorClockStringAfter As String = String.Empty
 
-            vectorClockString = "("
+            vectorClockStringBefore = "("
             For Each i In vectorClock
-                vectorClockString = vectorClockString & i.ToString & " "
+                vectorClockStringBefore = vectorClockStringBefore & i.ToString & " "
             Next
-            vectorClockString = vectorClockString & ")"
+            vectorClockStringBefore = vectorClockStringBefore & ")"
 
-            userMessage = New UserMessage(userName, txtChat.Text)
-            messageQueue.Add(userMessage.SentAtTime & " - " & userName & " says: " & userMessage.SentMessage & " - " & vectorClockString)
+            Me.currentTimeStamp = currentTimeStamp + 1
+            vectorClock(Me.currentProcess.PID) = currentTimeStamp
+
+            vectorClockStringAfter = "("
+            For Each i In vectorClock
+                vectorClockStringAfter = vectorClockStringAfter & i.ToString & " "
+            Next
+            vectorClockStringAfter = vectorClockStringAfter & ")"
+
+            userMessage = New UserMessage(Me.currentProcess.User, txtChat.Text)
+            messageQueue.Add(userMessage.SentAtTime & " - " & Me.currentProcess.User & " says: " & userMessage.SentMessage & " - " & vectorClockStringBefore & "->" & vectorClockStringAfter)
             txtChat.Text = ""
         End If
     End Sub
