@@ -43,6 +43,8 @@ Public Class P2PForm
 
             userMessage = New UserMessage(Me.currentProcess.User, txtChat.Text)
             messageQueue.Add(userMessage.SentAtTime & " - " & Me.currentProcess.User & " says: " & userMessage.SentMessage & " - " & vectorClockStringBefore & "->" & vectorClockStringAfter)
+            lastMessageCount = messageQueue.Count
+            txtHistory.Text = txtHistory.Text & messageQueue(messageQueue.Count - 1) & vbNewLine
             txtChat.Text = ""
         End If
     End Sub
@@ -53,16 +55,22 @@ Public Class P2PForm
         While (True)
             If lastMessageCount <> messageQueue.Count Then
                 If txtHistory.InvokeRequired Then
-                    BeginInvoke(New MyDelegate(AddressOf MySub))
-
+                    BeginInvoke(New MyDelegate(AddressOf GetNewMessages))
                 End If
-                lastMessageCount = messageQueue.Count
+
             End If
+            Thread.Sleep(currentProcess.SleepInterval)
         End While
     End Sub
 
-    Sub MySub()
-        txtHistory.Text = txtHistory.Text & messageQueue(messageQueue.Count - 1) & vbNewLine
+    Sub GetNewMessages()
+        Dim i As Integer
+        For i = 0 To messageQueue.Count
+            If i > lastMessageCount Then
+                txtHistory.Text = txtHistory.Text & messageQueue(i - 1) & vbNewLine
+            End If
+        Next
+        lastMessageCount = messageQueue.Count
     End Sub
 
     Private Sub P2PForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load

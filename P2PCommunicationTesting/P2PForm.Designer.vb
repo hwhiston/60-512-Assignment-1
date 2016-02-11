@@ -61,10 +61,9 @@ Partial Class P2PForm
         '
         'lblUsername
         '
-        Me.lblUsername.AutoSize = True
-        Me.lblUsername.Location = New System.Drawing.Point(13, 13)
+        Me.lblUsername.Location = New System.Drawing.Point(12, 9)
         Me.lblUsername.Name = "lblUsername"
-        Me.lblUsername.Size = New System.Drawing.Size(0, 13)
+        Me.lblUsername.Size = New System.Drawing.Size(100, 13)
         Me.lblUsername.TabIndex = 3
         '
         'P2PForm
