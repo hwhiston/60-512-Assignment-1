@@ -14,10 +14,10 @@ Module Mod1
         Dim r As Integer
 
         Console.WriteLine("Welcome to P2P chatting in VB!")
-        Console.WriteLine("Please select the number of processes to run:")
+        Console.WriteLine("Please select the number (greater than 0) of processes to run:")
         numProcesses = Console.ReadLine()
-        While (Not Integer.TryParse(numProcesses, n))
-            Console.WriteLine("Invalid input. Please select the number of processes to run:")
+        While (Not Integer.TryParse(numProcesses, n) Or numProcesses <= 0)
+            Console.WriteLine("Invalid input. Please select the number (greater than 0) of processes to run:")
             numProcesses = Console.ReadLine()
         End While
         numProcesses = numProcesses - 1
