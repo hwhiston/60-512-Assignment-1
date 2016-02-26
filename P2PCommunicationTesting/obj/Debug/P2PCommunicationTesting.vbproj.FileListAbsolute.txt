@@ -9,3 +9,7 @@ c:\users\halen\documents\visual studio 2015\Projects\P2PCommunicationTesting\P2P
 c:\users\halen\documents\visual studio 2015\Projects\P2PCommunicationTesting\P2PCommunicationTesting\obj\Debug\P2PCommunicationTesting.xml
 c:\users\halen\documents\visual studio 2015\Projects\P2PCommunicationTesting\P2PCommunicationTesting\obj\Debug\P2PCommunicationTesting.pdb
 C:\Users\Halen\Documents\Visual Studio 2015\Projects\P2PCommunicationTesting\P2PCommunicationTesting\obj\Debug\P2PCommunicationTesting.P2PForm.resources
+C:\Users\Halen\documents\visual studio 2015\Projects\P2PCommunicationTesting\P2PCommunicationTesting\bin\Debug\P2PCommunicationTesting.exe.manifest
+C:\Users\Halen\documents\visual studio 2015\Projects\P2PCommunicationTesting\P2PCommunicationTesting\bin\Debug\P2PCommunicationTesting.application
+C:\Users\Halen\documents\visual studio 2015\Projects\P2PCommunicationTesting\P2PCommunicationTesting\obj\Debug\P2PCommunicationTesting.exe.manifest
+C:\Users\Halen\documents\visual studio 2015\Projects\P2PCommunicationTesting\P2PCommunicationTesting\obj\Debug\P2PCommunicationTesting.application

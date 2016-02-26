@@ -6,6 +6,22 @@ P2PCommunicationTesting
 </name>
 </assembly>
 <members>
+<member name="F:P2PCommunicationTesting.Mod1.numProcesses">
+ <summary>
+ Title: P2P Communication Testing
+ Summary: A simulation of P2P communication using causal ordering
+ Assumptions: Reliable network communication, no fault tolerance, no join/leave
+ Submitted by: Halen Whiston, Shalini Bhattacharjee
+ Course: 60-512
+ Semester: Winter 2016
+ Due: February 28
+ </summary>
+</member>
+<member name="M:P2PCommunicationTesting.Mod1.Main">
+ <summary>
+ Main entry point of program
+ </summary>
+</member>
 <member name="T:P2PCommunicationTesting.My.Resources.Resources">
 <summary>
   A strongly-typed resource class, for looking up localized strings, etc.
@@ -21,6 +37,73 @@ P2PCommunicationTesting
   Overrides the current thread's CurrentUICulture property for all
   resource lookups using this strongly typed resource class.
 </summary>
+</member>
+<member name="T:P2PCommunicationTesting.P2PForm">
+ <summary>
+ Class representing the interface
+ </summary>
+</member>
+<member name="M:P2PCommunicationTesting.P2PForm.#ctor(P2PCommunicationTesting.UserProcess,System.Collections.ArrayList,System.Collections.ArrayList@)">
+ <summary>
+ Generate new interface for process
+ </summary>
+ <param name="userProcess">process pertaining to this interface</param>
+ <param name="messageQueue">message queue pertaining to this interface</param>
+ <param name="vectorClock">vectorclock pertaining to this interface</param>
+</member>
+<member name="M:P2PCommunicationTesting.P2PForm.btnSend_Click(System.Object,System.EventArgs)">
+ <summary>
+ Send message to other processes
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:P2PCommunicationTesting.P2PForm.IncrementVectorClockAndAddToQueue">
+ <summary>
+ Increment the vectorclock for this process and add the message to the holder queue of the receivers
+ </summary>
+</member>
+<member name="M:P2PCommunicationTesting.P2PForm.Listener">
+ <summary>
+ Listener waits for messages to be added to the holder queue
+ </summary>
+</member>
+<member name="M:P2PCommunicationTesting.P2PForm.DisplayNewMessages">
+ <summary>
+ Displays the newly received messages to user
+ </summary>
+</member>
+<member name="M:P2PCommunicationTesting.UserMessage.#ctor(System.String,System.String)">
+ <summary>
+ Create new user message
+ </summary>
+ <param name="user">user who created message</param>
+ <param name="message">message contents</param>
+</member>
+<member name="T:P2PCommunicationTesting.UserProcess">
+ <summary>
+ Class represents a user process to be generated
+ </summary>
+</member>
+<member name="M:P2PCommunicationTesting.UserProcess.#ctor(System.Int32,P2PCommunicationTesting.UserProcess[],System.Collections.ArrayList@,System.Int32)">
+ <summary>
+ Generate a new user process
+ </summary>
+ <param name="id">id to assign to process</param>
+ <param name="processes">reference to other processes</param>
+ <param name="vectorClock">vectorclock for the process</param>
+ <param name="rand">random number for the sleep timer</param>
+</member>
+<member name="M:P2PCommunicationTesting.UserProcess.MessageTask">
+ <summary>
+ Show GUI
+ </summary>
+</member>
+<member name="M:P2PCommunicationTesting.UserProcess.AddToMessageQueue(System.String)">
+ <summary>
+ Adds messages to the qeueue from senders of other processes
+ </summary>
+ <param name="message">message to receive</param>
 </member>
 </members>
 </doc>
